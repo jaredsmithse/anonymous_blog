@@ -3,5 +3,11 @@ get '/create' do
 end
 
 post '/create' do 
-	Post.create
+	post = Post.create(params[post])
+	params[tag].titles.split(",").each do |tag|
+		post.tags.create(Tag.create(tag.chomp))
+	end
+	redirect '/'
 end
+
+
