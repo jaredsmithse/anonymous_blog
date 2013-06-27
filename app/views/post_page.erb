@@ -1,0 +1,15 @@
+<div class="container">
+  <h1><%= @post.title %></h2>
+
+  <%tags = [] %>
+  <% @post.tags.each do |tag| %>
+      <%tags << tag.title %>
+  <% end %>
+  <p>
+  	<%= tags.join(", ") %>
+  <p>
+
+  <p><%= @post.body %></p>
+
+</div>
+
