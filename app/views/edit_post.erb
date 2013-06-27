@@ -1,0 +1,26 @@
+<div class="container">
+	<form action="/create" method="post">
+		<h3>Edit Your Work :</h3>
+		
+		<span>Title</span><br><input type="text" name="post[title]" value="<%= @post.title %>">
+		<br><br>
+		
+		<span>Body</span><br>
+		<textarea rows="10" cols="60" name="post[body]"><%= @post.body %></textarea>
+		<br><br>
+
+		<%tags = [] %>
+		<% @post.tags.each do |tag| %>
+			<%tags << tag.title %>
+		<% end %>
+
+
+		<span>Tag(s)</span><br>
+		<input type="text" name="tag[titles]" 
+			value="<%= tags.join(", ") %>">
+		<br><br>
+		
+		<input type="submit" value="Save Changes"> 
+
+	</form>
+</div>
