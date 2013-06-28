@@ -8,8 +8,9 @@ post '/create' do
 	redirect '/'
 end
 
-post '/update' do 
-	post = Post.update_attributes(params[:post])
+post '/update/:post_id' do 
+	post = Post.find(params[:post_id])
+	post.update_attributes(params[:post])
 	make_or_update_tags(params, post)
 	redirect '/'
 end
@@ -25,7 +26,7 @@ get '/edit/:post_id' do
 end
 
 def set_current_post
-	@post = Post.find_by_id(params[:post_id])
+	@post = Post.find(params[:post_id])
 end
 
 def make_or_update_tags(args, post)

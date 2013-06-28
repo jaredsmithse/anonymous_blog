@@ -1,5 +1,5 @@
 <div class="container">
-	<form action="/create" method="post">
+	<form action="/update/<%= @post.id %>" method="post">
 		<h3>Edit Your Work :</h3>
 		
 		<span>Title</span><br><input type="text" name="post[title]" value="<%= @post.title %>">
@@ -11,13 +11,13 @@
 
 		<%tags = [] %>
 		<% @post.tags.each do |tag| %>
-			<%tags << tag.title %>
+			<%tags << tag.title.chomp %>
 		<% end %>
 
 
 		<span>Tag(s)</span><br>
 		<input type="text" name="tag[titles]" 
-			value="<%= tags.join(", ") %>">
+			value="<%= tags.uniq.join(", ") %>">
 		<br><br>
 		
 		<input type="submit" value="Save Changes"> 

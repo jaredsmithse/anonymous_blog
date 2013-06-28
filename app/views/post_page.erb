@@ -3,10 +3,10 @@
 
   <%tags = [] %>
   <% @post.tags.each do |tag| %>
-      <%tags << tag.title %>
+      <%tags << tag.title.chomp %>
   <% end %>
   <p>
-  	<%= tags.join(", ") %>
+  	<%= tags.uniq.join(", ") %>
   <p>
 
   <p><%= @post.body %></p>
